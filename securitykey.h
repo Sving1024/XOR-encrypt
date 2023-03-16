@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-#define KEY_LENGTH 24
+#define KEY_LENGTH 16
 #define RANDOM_KEY 1
 #define INPUT_KEY 0
 #define INPUT_ERROR 2
 int genkey(unsigned char skey[]) {
 	srand(time(NULL));
-	for (int range = 0; range <= KEY_LENGTH - 1; range++)
+	for (int range = 0; range < KEY_LENGTH; range++)
 		skey[range] = 16 + rand() % 240;
 	return 0;
 }

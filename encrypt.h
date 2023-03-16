@@ -1,6 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define OPEN_FAILURE -1
+unsigned long int charkey2int(char key[]) {
+	unsigned long int i_key = 0;
+	for (int range = 0; range < 16; range++) {
+		printf("%hhx\n", key[range]);
+		printf("i_key before:%lx\n", i_key);
+		i_key += (long)key[range];
+		i_key *= 256;
+		printf("%lx\n", i_key);
+	}
+	printf("%lx\n", i_key);
+	return i_key;
+}
 long int file_size(char file[]) {
 	long int size1;
 	FILE *fp = fopen(file, "rb");
