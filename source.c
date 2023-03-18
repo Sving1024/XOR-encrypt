@@ -1,10 +1,9 @@
-#include "securitykey.h"
 #include "encrypt.h"
 #define DEBUGMODE true
 int main(int argc,char *argv[]) {
 	unsigned char skey[KEY_LENGTH];
 	int num1;
-	unsigned long int i_key;
+	unsigned long long int i_key[3];
 	bool next = false;
 	if (argc < 3&&DEBUGMODE==false) {
 		printf("Useage: applicationname input_file output_file");
@@ -29,8 +28,10 @@ int main(int argc,char *argv[]) {
 			}
 		}
 		printkey(skey);
-		i_key = charkey2int(skey);
-		printf("%lx", i_key);
+		charkey2int(skey,i_key);
+		printf("%llx", i_key[0]);
+		printf("%llx", i_key[1]);
+		printf("%llx\n", i_key[2]);
 		printf("countiune?[enter]");
 		getchar();
 		if (xeoren(argv[1], argv[2], skey) == OPEN_FAILURE) {
