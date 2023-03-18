@@ -10,15 +10,17 @@
 unsigned long long int charkey2int(char key[],long long outkey[]) {
 	unsigned long long int i_key = 0;
 	int counter = 0;
-	for (int range = 0; counter < KEY_LENGTH/8 ; range++) {
+	for (int range = 0; range < KEY_LENGTH; range++) {
 		printf("%hhx\n", key[range]);
-		printf("i_key before:%llx\n", i_key);
+	}
+	for (int range = 0; counter < KEY_LENGTH/8 ; range++) {
+		//printf("%hhx\n", key[range]);
+		//printf("i_key before:%llx\n", i_key);
 		i_key <<= 8;
-		printf("%llx", i_key);
+		//printf("%llx\n", i_key);
 		i_key += key[range];
-		printf("%llx\n", i_key);
-		if (range == 7) {
-			range = -1;
+		//printf("%llx\n", i_key);
+		if (range % 8 == 7) {
 			outkey[counter] = i_key;
 			counter++;
 		}
