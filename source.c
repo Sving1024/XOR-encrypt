@@ -27,11 +27,8 @@ int main(int argc,char *argv[]) {
 				break;
 			}
 		}
+		printf("\n\t");
 		printkey(skey);
-		charkey2int(skey,i_key);
-		printf("%llx", i_key[0]);
-		printf("%llx", i_key[1]);
-		printf("%llx\n", i_key[2]);
 		printf("countiune?[enter]");
 		getchar();
 		if (xeoren(argv[1], argv[2], skey) == OPEN_FAILURE) {
