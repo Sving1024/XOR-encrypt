@@ -10,7 +10,7 @@ int main(int argc,char *argv[]) {
 	}
 	else {
 		int size_argv = strlen(argv[1]);
-		char out[size_argv + 4];
+		char* out = (char*)malloc(size_argv);
 		strncpy(out, argv[1], size_argv + 4);
 		strncat(out, ".xe", size_argv + 4);
 		while (next != true) {
