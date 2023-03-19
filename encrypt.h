@@ -44,13 +44,19 @@ int xeoren(char input[], char output[], unsigned char key[]) {
 	long counter = 1;
 	FILE* fp_input = fopen(input, "rb"), * fp_output = fopen(output, "wb");
 	if (fp_input != NULL && fp_output != NULL) {
-		while (counter <= file_size(input)) {
+		long int size = file_size(input);
+		float status,f_size,f_counter;
+		while (counter <= size) {
 			ch = getc(fp_input);
 			ch_output = ch ^ key[range];
 			putc(ch_output, fp_output);
-			printf("%d:%hhx\n", counter, ch_output);
+			//printf("%d:%hhx\n", counter, ch_output);
 			range++;
 			counter++;
+			f_size = (float)size;
+			f_counter = (float)counter;
+			status = f_counter / f_size * 100;
+			printf("%.2f%%/100.00%%\r", status);
 			if (range >= 24)
 				range = 0;
 		}
